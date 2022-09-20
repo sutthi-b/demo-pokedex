@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import styled from 'styled-components';
 
@@ -19,12 +19,20 @@ const StyledDiv = styled.div`
   }
 `;
 
-const FilterDropdown = ({ label = 'label', items = [] }) => {
+const FilterDropdown = ({ label = 'label', items = [], onChange }) => {
   const [selectedItem, setSelectedItem] = useState(items[0]);
 
   const onItemSelect = ({ item }) => {
     setSelectedItem(item);
+    onChange?.(item); // shorthand for if (onChange) {onChange}
   };
+
+  useEffect(() => {
+    if (!items) return;
+
+    const defaultItem = items[0];
+    onItemSelect({ item: defaultItem });
+  }, [items]);
 
   return (
     <StyledDiv>
