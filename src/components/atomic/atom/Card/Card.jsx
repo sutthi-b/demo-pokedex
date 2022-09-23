@@ -16,10 +16,23 @@ const StyledCard = styled(CardAntd)`
   max-width: ${({ maxWidth }) => maxWidth || '60rem'};
 `;
 
-const Card = ({ children, left, right, bgColors, maxWidth, ...props }) => {
+const Card = ({
+  children,
+  left,
+  right,
+  bgColors,
+  borderRadius,
+  maxWidth,
+  ...props
+}) => {
   const header = <Header left={left} right={right} />;
   return (
-    <StyledCard bgColors={bgColors} maxWidth={maxWidth} {...props}>
+    <StyledCard
+      bgColors={bgColors}
+      borderRadius={borderRadius}
+      maxWidth={maxWidth}
+      {...props}
+    >
       {header && header}
       {children}
     </StyledCard>
