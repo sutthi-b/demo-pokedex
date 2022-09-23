@@ -4,7 +4,7 @@ import { Card as CardAntd } from 'antd';
 
 const StyledCard = styled(CardAntd)`
   width: ${({ width }) => width || '20rem'};
-  padding: ${({ padding }) => padding || '1ren'};
+  padding: ${({ padding }) => padding || '1rem'};
   background: ${({ bgColors }) =>
     `linear-gradient(${bgColors[0]}, ${bgColors[1]})`};
 
@@ -12,13 +12,14 @@ const StyledCard = styled(CardAntd)`
     padding: 0;
   }
 
-  border-radius: ${({ borderRadius }) => borderRadius};
+  border-radius: ${({ borderRadius }) => borderRadius || '0.1rem'};
+  max-width: ${({ maxWidth }) => maxWidth || '60rem'};
 `;
 
-const Card = ({ children, left, right, bgColors, ...props }) => {
+const Card = ({ children, left, right, bgColors, maxWidth, ...props }) => {
   const header = <Header left={left} right={right} />;
   return (
-    <StyledCard bgColors={bgColors} {...props}>
+    <StyledCard bgColors={bgColors} maxWidth={maxWidth} {...props}>
       {header && header}
       {children}
     </StyledCard>
