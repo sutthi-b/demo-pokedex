@@ -14,9 +14,7 @@ const PokemonData = ({ pokemon }) => {
     <div>
       <Text>ABOUT</Text>
       <Content>
-        <Text fontSize="0.8rem">
-          {pokemon?.flavor_text_entries[0]?.flavor_text_entries}
-        </Text>
+        <Text fontSize="0.8rem">{pokemon?.about}</Text>
       </Content>
       <Text>ABILITIES</Text>
       <Content>
